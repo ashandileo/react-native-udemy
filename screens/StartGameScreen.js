@@ -43,12 +43,6 @@ const StartGameScreen = () => {
     setEnteredValue('');
   }
 
-  let confirmedOutput;
-
-  if(confirmed) {
-    confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>
-  }
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.screen}>
@@ -69,7 +63,7 @@ const StartGameScreen = () => {
             <View style={styles.button}><Button title="Confirm" onPress={confirmInputHandler} color={colors.primary} /></View>
           </View>
         </Card>
-        {confirmedOutput}
+        {confirmed && <Text>Chosen Number: {selectedNumber}</Text>}
       </View>
     </TouchableWithoutFeedback>
   );
