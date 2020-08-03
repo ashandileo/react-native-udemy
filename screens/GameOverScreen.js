@@ -8,9 +8,15 @@ const GameOverScreen = ({ onRestart, roundsNumber, userNumber }) => {
   return (
     <View style={styles.screen}>
       <TitleText>The Game is Over!</TitleText>
-      <Image source={require('../assets/success.png')} />
+      <View style={styles.imageContainer}>
+        <Image 
+          source={require('../assets/success.png')} 
+          style={styles.image} 
+          resizeMode="cover"
+        />
+      </View>
       <BodyText>Number of rounds: {roundsNumber}</BodyText>
-      <BodyText>Number was: {userNumber}</BodyText>
+      <BodyText style={{marginBottom: 12}}>Number was: {userNumber}</BodyText>
       <Button title="New Game" onPress={onRestart} />
     </View>
   )
@@ -21,6 +27,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  imageContainer: {
+    width: 300,
+    height: 300,
+    borderRadius: 200,
+    borderWidth: 3,
+    borderColor: 'black',
+    overflow: 'hidden',
+    marginVertical: 20
+  },
+  image: {
+    width: '100%',
+    height: '100%'
   }
 });
 
