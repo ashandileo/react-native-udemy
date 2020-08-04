@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
 import MainButton from '../components/MainButton';
+import BodyText from '../components/BodyText';
 
 import DefaultStyles from '../constants/default-styles';
 
@@ -17,6 +18,15 @@ const generateRandomBetween = (min, max, exclude) => {
   } else {
     return rndNum;
   }
+}
+
+const renderListItem = (value, i) => {
+  return (
+    <View key={i} style={styles.listItem}>
+      <BodyText>#{i}</BodyText>
+      <BodyText>{value}</BodyText>
+    </View>
+  )
 }
 
 const GameScreen = ({ userChoice, onGameOver }) => {
@@ -66,13 +76,11 @@ const GameScreen = ({ userChoice, onGameOver }) => {
           <Ionicons name="md-add" size={24} color="white" />
         </MainButton>
       </Card>
-      <ScrollView>
-        {pastGuesses.map((guess, i) => (
-          <View key={i}>
-            <Text>{guess}</Text>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.list}> 
+        <ScrollView>
+          {pastGuesses.map((guess, i) => renderListItem(guess, pastGuesses.length - i))}
+        </ScrollView>
+      </View>
     </View>
   )
 }
@@ -89,6 +97,20 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 300,
     maxWidth: '90%'
+  },
+  list: {
+    width: '80%',
+    flex: 1
+  },
+  listItem: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderRadius: 12
   }
 });
 
