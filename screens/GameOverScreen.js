@@ -3,6 +3,8 @@ import { View, Image, StyleSheet, Button, Text } from 'react-native';
 
 import TitleText from '../components/TitleText';
 import BodyText from '../components/BodyText';
+import MainButton from '../components/MainButton';
+
 import colors from '../constants/colors';
 
 const GameOverScreen = ({ onRestart, roundsNumber, userNumber }) => {
@@ -13,7 +15,7 @@ const GameOverScreen = ({ onRestart, roundsNumber, userNumber }) => {
         <Image 
           fadeDuration={500}
           source={require('../assets/success.png')} // for local image
-          source={{uri: 'https://theclassicwanderer.com/wp-content/uploads/2019/05/The-Classic-Wanderer-Gunung-Gede-Cibodas-32.jpg'}}
+          // source={{uri: 'https://theclassicwanderer.com/wp-content/uploads/2019/05/The-Classic-Wanderer-Gunung-Gede-Cibodas-32.jpg'}}
           style={styles.image} 
           resizeMode="cover"
         />
@@ -23,7 +25,9 @@ const GameOverScreen = ({ onRestart, roundsNumber, userNumber }) => {
           Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess the number <Text style={styles.highlight}>{userNumber}</Text>
         </BodyText>
       </View>
-      <Button title="New Game" onPress={onRestart} />
+      <MainButton onPress={onRestart}>
+        New Game
+      </MainButton>
     </View>
   )
 };
