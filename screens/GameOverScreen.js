@@ -10,7 +10,9 @@ const GameOverScreen = ({ onRestart, roundsNumber, userNumber }) => {
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
         <Image 
-          source={require('../assets/success.png')} 
+          fadeDuration={500}
+          source={require('../assets/success.png')} // for local image
+          source={{uri: 'https://theclassicwanderer.com/wp-content/uploads/2019/05/The-Classic-Wanderer-Gunung-Gede-Cibodas-32.jpg'}}
           style={styles.image} 
           resizeMode="cover"
         />
