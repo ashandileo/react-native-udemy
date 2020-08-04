@@ -5,11 +5,13 @@ import colors from '../constants/colors';
 
 const MainButton = ({ children, onPress }) => {
   return (
-    <TouchableNativeFeedback onPress={onPress}>
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>{children}</Text>
-      </View>
-    </TouchableNativeFeedback>
+    <View style={{ borderRadius: 25, overflow: 'hidden' }}>
+      <TouchableNativeFeedback onPress={onPress} background={TouchableNativeFeedback.SelectableBackground({rippleRadius: 12})}>
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>{children}</Text>
+        </View>
+      </TouchableNativeFeedback>
+    </View>
   )
 }
 
